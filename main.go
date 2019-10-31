@@ -95,15 +95,14 @@ func diagonalDiference(arr [][]int32) int32 {
 }
 
 type car struct {
-	gasPedal      uint16 // min 0 max 65535
+	gasPedal      uint16
 	breakPedal    uint16
-	steeringWheel int16 // -32k +32k
+	steeringWheel int16
 	topSpeedKmh   float64
+	fuelType      string
+	make          string
+	model         string
+	year          int32
 }
 
-func main() {
-
-	aCar := car{22341, 0, 12535, 225.0}
-
-	fmt.Println(aCar.gasPedal)
-}
+func main() {}
