@@ -61,36 +61,33 @@ func TextSum(input map[string]int, TextInput1 string) int {
 }
 
 //diagonalDiference
-func diagonalDiference(arr [][]int32) int32 {
+func diagonalDifference(arr [][]int32) int32 {
+	// Write your code here
+	var suma1 int32
+	var suma2 int32
 
-	/*
+	n := len(arr)
+	for i := 0; i < n; i++ {
 
-		ar := [][]int32{}
+		for j := 0; j < len(arr); j++ {
 
-		row1 := []int32{1, 2, 3}
-		row2 := []int32{4, 5, 6}
-		row3 := []int32{9, 8, 9}
+			if i == j {
+				suma1 += arr[i][j]
+			}
 
-		ar = append(ar, row1)
-		ar = append(ar, row2)
-		ar = append(ar, row3)
-
-		fmt.Println(diagonalDiference(ar))
-	*/
-
-	leftRight := arr[0][0] + arr[1][1] + arr[2][2]
-	rightLeft := arr[0][2] + arr[1][1] + arr[2][0]
-
-	var diff int32
-
-	if rightLeft >= leftRight {
-
-		diff = rightLeft - leftRight
-	} else {
-		diff = leftRight - rightLeft
+			if i == n-j-1 {
+				suma2 += arr[i][j]
+			}
+		}
 	}
 
-	return diff
+	if suma1 < suma2 {
+
+		return suma2 - suma1
+	} else {
+		return suma1 - suma2
+	}
+
 }
 
 func breakingRecords(scores []int32) []int32 {
@@ -140,4 +137,88 @@ func sockMerchant(n int32, ar []int32) int32 {
 	}
 
 	return totalPairs
+}
+
+func kangaroo(x1 int32, v1 int32, x2 int32, v2 int32) string {
+
+	var jumpx int32
+	var jumpy int32
+
+	for {
+
+		x1 += v1
+		x2 += v2
+
+		jumpx++
+		jumpy++
+
+		if x2 > x1 && v2 > v1 {
+
+			break
+		} else {
+
+			if x1 == x2 && jumpx == jumpy {
+
+				fmt.Println(x1)
+				fmt.Println(x2)
+				return "YES"
+				break
+
+			} else {
+				if x2 > x1 && v2 >= v1 {
+
+					break
+				}
+
+				continue
+			}
+		}
+	}
+
+	return "NO"
+}
+
+func countApplesAndOranges(s int32, t int32, a int32, b int32, apples []int32, oranges []int32) {
+
+	var applesInside int32
+	var orangeInside int32
+
+	distanceApples := []int32{}
+	distanceOranges := []int32{}
+
+	for _, apple := range apples {
+
+		distanceApples = append(distanceApples, a+apple)
+	}
+
+	for _, orange := range oranges {
+
+		distanceOranges = append(distanceOranges, b+orange)
+	}
+
+	//check if the fruits are inside or outside
+
+	//apples
+
+	for _, distance := range distanceApples {
+
+		if distance >= s && distance <= t {
+
+			applesInside++
+		}
+	}
+
+	//oranges
+	for _, distanceOrg := range distanceOranges {
+
+		if distanceOrg >= s && distanceOrg <= t {
+
+			orangeInside++
+		}
+	}
+
+	//return the result
+
+	fmt.Println(applesInside)
+	fmt.Println(orangeInside)
 }
