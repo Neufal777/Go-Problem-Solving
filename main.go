@@ -82,7 +82,6 @@ func diagonalDifference(arr [][]int32) int32 {
 	}
 
 	if suma1 < suma2 {
-
 		return suma2 - suma1
 	} else {
 		return suma1 - suma2
@@ -141,8 +140,7 @@ func sockMerchant(n int32, ar []int32) int32 {
 
 func kangaroo(x1 int32, v1 int32, x2 int32, v2 int32) string {
 
-	var jumpx int32
-	var jumpy int32
+	var jumpx, jumpy int32
 
 	for {
 
@@ -179,8 +177,7 @@ func kangaroo(x1 int32, v1 int32, x2 int32, v2 int32) string {
 
 func countApplesAndOranges(s int32, t int32, a int32, b int32, apples []int32, oranges []int32) {
 
-	var applesInside int32
-	var orangeInside int32
+	var applesInside, orangeInside int32
 
 	distanceApples := []int32{}
 	distanceOranges := []int32{}
@@ -195,10 +192,7 @@ func countApplesAndOranges(s int32, t int32, a int32, b int32, apples []int32, o
 		distanceOranges = append(distanceOranges, b+orange)
 	}
 
-	//check if the fruits are inside or outside
-
 	//apples
-
 	for _, distance := range distanceApples {
 
 		if distance >= s && distance <= t {
@@ -216,8 +210,5 @@ func countApplesAndOranges(s int32, t int32, a int32, b int32, apples []int32, o
 		}
 	}
 
-	//return the result
-
-	fmt.Println(applesInside)
-	fmt.Println(orangeInside)
+	fmt.Println(applesInside, orangeInside)
 }
